@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task‑2 – Modern Practice Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+        /* TASK 2 – RESPONSIVE LAYOUT + MODERN DESIGN */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Inter", system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(120deg, #f4f7fb 0%, #eef2f6 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            display: grid;
+            grid-template-areas:
+                "header"
+                "nav"
+                "content"
+                "footer";
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header {
+            grid-area: header;
+            background: linear-gradient(90deg, #4a5568, #2d3748);
+            color: white;
+            padding: 1.5rem 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        nav {
+            grid-area: nav;
+            background: #1a202c;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            padding: 0.8rem 0;
+            margin: 0;
+            justify-content: center;
+        }
+
+        .nav-list li {
+            margin: 0 1.2rem;
+        }
+
+        .nav-list a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+            transition: 0.2s ease;
+        }
+
+        .nav-list a:hover {
+            background: #2d3748;
+            color: white;
+        }
+
+        main {
+            grid-area: content;
+            padding: 2rem 0;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-left {
+            flex: 1;
+        }
+
+        .section-right {
+            flex: 1;
+        }
+
+        /* Modern card with subtle shadow */
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.8rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h2 {
+            margin-bottom: 1rem;
+            color: #1a202c;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: #4a5568;
+            font-size: 0.95rem;
+        }
+
+
+
+        /* TASK 1 – FORM VALIDATION + MODERN STYLING */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 500;
+            color: #2d3748;
+            font-size: 0.95rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            background: #f7fafc;
+            transition: 0.2s ease;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #a0aec0;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #4a5568;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(74, 85, 104, 0.15);
+        }
+
+        button {
+            padding: 0.8rem 1.6rem;
+            background: #4a5568;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: 0.2s ease;
+        }
+
+        button:hover {
+            background: #2d3748;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .error-message {
+            color: #d32f2f;
+            margin-top: 0.4rem;
+            font-size: 0.85rem;
+        }
+
+        .link {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .link:hover {
+            color: #2d3748;
+            text-decoration: underline;
+        }
+
+
+
+        /* TASK 2 – DOM MANIPULATION: MODERN To‑Do List */
+        .todo-container {
+            margin-top: 1.2rem;
+        }
+
+        .todo-input {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            background: #f7fafc;
+        }
+
+        .todo-input:focus {
+            border-color: #4a5568;
+            box-shadow: 0 0 0 3px rgba(74, 85, 104, 0.15);
+        }
+
+        .todo-add-btn {
+            margin-top: 0.8rem;
+            width: 100%;
+            padding: 0.9rem 1rem;
+            background: #4a5568;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .todo-add-btn:hover {
+            background: #2d3748;
+        }
+
+        .todo-list {
+            margin-top: 1.2rem;
+        }
+
+        .todo-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 1rem;
+            background: #f7fafc;
+            border-radius: 10px;
+            margin-bottom: 0.6rem;
+            border: 1px solid #e2e8f0;
+            transition: 0.15s ease;
+        }
+
+        .todo-item:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e0;
+        }
+
+        .todo-item button {
+            font-size: 0.9rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            background: #e53e3e;
+            color: white;
+        }
+
+        .todo-item button:hover {
+            background: #c53030;
+        }
+
+
+
+        /* TASK 2 – RESPONSIVE LAYOUT with media queries */
+        @media (max-width: 768px) {
+            .nav-list {
+                flex-direction: column;
+                align-items: center;
+                padding: 0.8rem 0;
+            }
+
+            .nav-list li {
+                margin: 0.4rem 0;
+            }
+
+            .nav-list a {
+                padding: 0.4rem 0.8rem;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+                gap: 1.6rem;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .card {
+                padding: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.8rem;
+            }
+
+            .card {
+                padding: 1.4rem;
+            }
+
+            main {
+                padding: 1.6rem 0;
+            }
+        }
+
+
+
+        footer {
+            grid-area: footer;
+            background: #1a202c;
+            color: #e2e8f0;
+            text-align: center;
+            padding: 1.4rem 0;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- TASK 2 – RESPONSIVE LAYOUT -->
+    <div class="container">
+        <header>
+            <h1>Task‑2 – Modern Practice Page</h1>
+        </header>
+
+        <nav>
+            <ul class="nav-list">
+                <li><a href="#contact-form">Contact Form</a></li>
+                <li><a href="#todo-list">To‑Do List</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- TASK 1 – FORM VALIDATION + MODERN STYLING -->
+            <section id="contact-form" class="section-grid">
+                <div class="section-left">
+                    <div class="card">
+                        <h2>✨ Contact Us</h2>
+                        <p>Fill the form below to send us a message. We’ll get back to you soon!</p>
+
+                        <form id="contactForm" novalidate>
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" id="name" name="name" placeholder="Your full name" />
+                                <div id="nameError" class="error-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" placeholder="Your email address" />
+                                <div id="emailError" class="error-message"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="4"
+                                    placeholder="Your message (optional)"></textarea>
+                                <div id="msgError" class="error-message"></div>
+                            </div>
+
+                            <button type="submit">Send Message →</button>
+
+                            <p style="margin-top: 1rem; font-size: 0.9rem; color: #718096">
+                                Your data is safe. We don’t share your information with anyone.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="section-right">
+                    <div class="card">
+                        <h2>How to use this form</h2>
+                        <p>
+                            - Enter your name and a valid email address.<br />
+                            - (Optional) add a message.<br />
+                            - Click <strong>Send Message</strong> to submit.
+                        </p>
+                        <p>Note: JavaScript validates your inputs before sending.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TASK 2 – DOM MANIPULATION: To‑Do List -->
+            <section id="todo-list" class="section-grid">
+                <div class="section-left">
+                    <div class="card">
+                        <h2>📝 To‑Do List (DOM Practice)</h2>
+
+                        <div class="todo-container">
+                            <input type="text" id="todoInput" class="todo-input"
+                                placeholder="What do you need to do?" />
+                            <button class="todo-add-btn" onclick="addTask()">Add Task</button>
+
+                            <div class="todo-list" id="todoList">
+                                <!-- Tasks will be added here by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-right">
+                    <div class="card">
+                        <h2>How to use this list</h2>
+                        <p>
+                            - Type a task and click <strong>Add Task</strong>.<br />
+                            - To remove a task, click the <strong>Delete</strong> button next to it.
+                        </p>
+                        <p>
+                            This demo uses pure JavaScript DOM manipulation. No page reloads needed!
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 | Task‑2 Practice – Modern Web Projects</p>
+        </footer>
+    </div>
+
+    <script>
+        // TASK 1 – FORM VALIDATION
+        const form = document.getElementById("contactForm");
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const msgInput = document.getElementById("message");
+
+        const nameError = document.getElementById("nameError");
+        const emailError = document.getElementById("emailError");
+        const msgError = document.getElementById("msgError");
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        function validateForm() {
+            let isValid = true;
+
+            // Reset errors
+            nameError.textContent = "";
+            emailError.textContent = "";
+            msgError.textContent = "";
+
+            // Name validation
+            if (!nameInput.value.trim()) {
+                nameError.textContent = "Name is required.";
+                isValid = false;
+            }
+
+            // Email validation (format + required)
+            const emailValue = emailInput.value.trim();
+            if (!emailValue) {
+                emailError.textContent = "Email is required.";
+                isValid = false;
+            } else if (!emailPattern.test(emailValue)) {
+                emailError.textContent = "Please enter a valid email address.";
+                isValid = false;
+            }
+
+            // Message (optional, but must be at least 3 chars if not empty)
+            const msgValue = msgInput.value.trim();
+            if (msgValue && msgValue.length < 3) {
+                msgError.textContent = "Message must be at least 3 characters long.";
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            if (validateForm()) {
+                alert("Form submitted successfully!");
+                form.reset();
+            }
+        });
+
+
+
+        // TASK 2 – DOM MANIPULATION: To‑Do List
+        const todoInputEl = document.getElementById("todoInput");
+        const todoListEl = document.getElementById("todoList");
+
+        function addTask() {
+            const taskText = todoInputEl.value.trim();
+
+            if (!taskText) {
+                alert("Please enter a task.");
+                return;
+            }
+
+            const taskItem = document.createElement("div");
+            taskItem.className = "todo-item";
+            taskItem.innerHTML = `
+        <span>${taskText}</span>
+        <button onclick="removeTask(this)">Delete</button>
+      `;
+
+            todoListEl.appendChild(taskItem);
+            todoInputEl.value = "";
+        }
+
+        function removeTask(deleteBtn) {
+            const taskItem = deleteBtn.parentElement;
+            taskItem.remove();
+        }
+
+        // Add with Enter key
+        todoInputEl.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                addTask();
+            }
+        });
+    </script>
+</body>
+
+</html>
